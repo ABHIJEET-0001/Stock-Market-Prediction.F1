@@ -32,3 +32,51 @@ The system supports multiple Indian companies such as **TCS, Infosys, Reliance, 
 
 ## 📂 Project Structure  
 
+StockVision/
+│
+├── data/
+│ └── TCS.csv
+│
+├── model/
+│ └── stock_model.pkl
+│
+├── static/
+│ ├── style.css
+│ └── graph.png
+│
+├── templates/
+│ └── index.html
+│
+├── app.py
+├── train.py
+├── predict.py
+└── README.md
+
+
+---
+
+## ⚙️ Installation  
+
+1. Clone or download the repository  
+2. Open terminal inside the project folder  
+3. Install dependencies  
+
+```bash
+pip install flask pandas numpy scikit-learn matplotlib yfinance
+
+🧠 Train the Machine Learning Model
+python train.py
+
+
+This will generate the trained model:
+
+model/stock_model.pkl
+
+🌐 Run the Web Application
+python app.py
+
+
+Open in browser:
+
+http://127.0.0.1:5000
+
