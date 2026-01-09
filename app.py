@@ -12,8 +12,7 @@ app = Flask(__name__)
 # -------------------------------
 def get_stock_data(symbol):
     stock = yf.Ticker(symbol)
-    data = stock.history(period="1mo")
-    return data
+    return stock.history(period="1mo")
 
 # -------------------------------
 # Home Route
@@ -21,9 +20,7 @@ def get_stock_data(symbol):
 @app.route("/", methods=["GET", "POST"])
 def home():
 
-    # Get selected stock (default = TCS)
     symbol = request.args.get("stock", "TCS.NS")
-
     data = get_stock_data(symbol)
 
     # Latest OHLCV
@@ -47,40 +44,60 @@ def home():
         trend = "Bearish 📉"
         color = "red"
 
-    # AI Prediction
+    # Market Prediction
     prediction = None
     if request.method == "POST":
         prediction = predict_next(open_p, high, low, volume)
 
     # -------------------------------
-    # Generate Stock Market Graph
+    # PRO Trading Chart
     # -------------------------------
     prices = data["Close"].values
     dates = data.index
 
-    plt.figure(figsize=(9,4))
+    plt.figure(figsize=(20,9), facecolor="white")
+    plt.grid(True, linestyle="--", alpha=0.3)
+
+    # Main price line
+    plt.plot(dates, prices, color="#1f77b4", linewidth=3, label="Closing Price")
+
+    # Profit / Loss points
+    profit_x, profit_y = [], []
+    loss_x, loss_y = [], []
 
     for i in range(1, len(prices)):
         if prices[i] >= prices[i-1]:
-            plt.plot(dates[i-1:i+1], prices[i-1:i+1], color="green", linewidth=2)
+            profit_x.append(dates[i])
+            profit_y.append(prices[i])
         else:
-            plt.plot(dates[i-1:i+1], prices[i-1:i+1], color="red", linewidth=2)
+            loss_x.append(dates[i])
+            loss_y.append(prices[i])
 
-    plt.fill_between(dates, prices, min(prices), where=(prices >= prices[0]), color="green", alpha=0.1)
-    plt.fill_between(dates, prices, min(prices), where=(prices < prices[0]), color="red", alpha=0.1)
+    plt.scatter(profit_x, profit_y, color="#2ecc71", s=120, label="Profit Day ▲")
+    plt.scatter(loss_x, loss_y, color="#e74c3c", s=120, label="Loss Day ▼")
 
-    plt.title(f"{symbol} Share Price - Last 30 Trading Days")
-    plt.xlabel("Date")
-    plt.ylabel("Price (₹)")
-    plt.xticks(rotation=25)
-    plt.grid(True)
+    # Area under curve
+    plt.fill_between(dates, prices, min(prices), color="#3498db", alpha=0.08)
+
+    # Labels
+    plt.title(f"{symbol} – 30 Day Market Trend", fontsize=24, fontweight="bold")
+    plt.xlabel("Date", fontsize=18, fontweight="bold")
+    plt.ylabel("Price (₹)", fontsize=18, fontweight="bold")
+
+    plt.xticks(rotation=25, fontsize=14)
+    plt.yticks(fontsize=14)
+
+    plt.legend(fontsize=14, loc="upper left")
+
+    for spine in plt.gca().spines.values():
+        spine.set_visible(False)
 
     plt.tight_layout()
-    plt.savefig("static/graph.png")
+    plt.savefig("static/graph.png", dpi=180)
     plt.close()
 
     # -------------------------------
-    # Send data to UI
+    # Render UI
     # -------------------------------
     return render_template(
         "index.html",
