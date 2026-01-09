@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Market Prediction System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>📊 Stock Market Prediction System</h2>
+</div>
+
+<div class="dashboard">
+
+    <!-- LEFT PANEL -->
+    <div class="left">
+
+        <!-- Stock Selector -->
+        <form method="GET">
+            <select name="stock" class="stock-select" onchange="this.form.submit()">
+                <option value="TCS.NS" {% if symbol=="TCS.NS" %}selected{% endif %}>TCS</option>
+                <option value="INFY.NS" {% if symbol=="INFY.NS" %}selected{% endif %}>Infosys</option>
+                <option value="RELIANCE.NS" {% if symbol=="RELIANCE.NS" %}selected{% endif %}>Reliance</option>
+                <option value="HDFCBANK.NS" {% if symbol=="HDFCBANK.NS" %}selected{% endif %}>HDFC Bank</option>
+                <option value="ICICIBANK.NS" {% if symbol=="ICICIBANK.NS" %}selected{% endif %}>ICICI Bank</option>
+            </select>
+        </form>
+
+        <h3>{{ symbol }} Stock</h3>
+        <h1 class="price">₹ {{ today }}</h1>
+
+        <div class="trend" style="color:{{color}}">
+            {{ change }} ({{ percent }}%) • {{ trend }}
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="stats">
+            <div class="stat">
+                <span>Open</span>
+                <b>₹ {{ open }}</b>
+            </div>
+            <div class="stat">
+                <span>High</span>
+                <b>₹ {{ high }}</b>
+            </div>
+            <div class="stat">
+                <span>Low</span>
+                <b>₹ {{ low }}</b>
+            </div>
+            <div class="stat">
+                <span>Volume</span>
+                <b>{{ volume }}</b>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right">
+
+        <div class="card">
+            <h3>30-Day Market Trend</h3>
+            <img src="/static/graph.png" class="chart">
+        </div>
+
+        <div class="card">
+            <h3>Market Prediction</h3>
+            <form method="POST">
+                <button class="btn">Predict Tomorrow’s Price</button>
+            </form>
+
+            {% if prediction %}
+            <h2 style="margin-top:15px;">₹ {{ prediction }}</h2>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
