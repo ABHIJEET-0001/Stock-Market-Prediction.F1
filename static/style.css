@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    font-family: Segoe UI, sans-serif;
+    background: #f4f6f9;
+}
+
+.navbar {
+    background: #0a2540;
+    padding: 15px 30px;
+    color: white;
+    font-size: 22px;
+}
+
+.dashboard {
+    display: flex;
+    padding: 20px;
+}
+
+.left {
+    width: 30%;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-right: 20px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+}
+
+.left h1 {
+    font-size: 36px;
+}
+
+.box p {
+    margin: 8px 0;
+}
+
+.right {
+    width: 70%;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+}
+
+.btn {
+    background: #0066ff;
+    border: none;
+    padding: 12px 20px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background: #004ecc;
+}
+.price {
+    font-size: 52px;
+    font-weight: 700;
+    margin: 10px 0;
+    color: #111;
+}
+.chart {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+}
