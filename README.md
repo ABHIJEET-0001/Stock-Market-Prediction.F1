@@ -9,6 +9,8 @@ B.Tech Computer Science (AI & Software Development)
 🌐 Live Demo:
 https://stock-market-prediction-f1.onrender.com
 
+
+
 ##🚀 Project Overview
 A professional **AI-powered stock market prediction web application** that uses real-time NSE stock data and Machine Learning to predict future stock prices.  
 The system supports multiple Indian companies such as **TCS, Infosys, Reliance, HDFC Bank and ICICI Bank** and displays live prices, trends, profit/loss, and interactive market charts through a modern dashboard.
