@@ -1,6 +1,11 @@
 # 📊 Stock Market Prediction System  
 AI-Powered Trading Dashboard for Indian Stock Market (NSE)
 
+ 👨‍💻 Author
+
+Abhijeet Kasera
+B.Tech Computer Science (AI & Software Development) 
+
 🌐 Live Demo:
 https://stock-market-prediction-f1.onrender.com
 
@@ -89,8 +94,5 @@ Open in browser:
 
 http://127.0.0.1:5000
 
-## 👨‍💻 Author
 
-Abhijeet Kasera
-B.Tech Computer Science (AI & Software Development)
 
