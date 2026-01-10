@@ -42,23 +42,41 @@ def home():
         trend = "Bearish 📉"
         color = "red"
 
+<<<<<<< HEAD
     # Prediction
+=======
+    # Market Prediction
+>>>>>>> d41965da67685fabdefaad58bb6b15ce0b594801
     prediction = None
     if request.method == "POST":
         prediction = predict_next(open_p, high, low, volume)
 
     # -------------------------------
+<<<<<<< HEAD
     # PROFESSIONAL STOCK GRAPH
+=======
+    # PRO Trading Chart
+>>>>>>> d41965da67685fabdefaad58bb6b15ce0b594801
     # -------------------------------
     prices = data["Close"].values
     dates = data.index
 
+<<<<<<< HEAD
     plt.figure(figsize=(14,6), facecolor="white")
 
     # Closing price line
     plt.plot(dates, prices, color="#1f77b4", linewidth=3, label="Closing Price")
 
     # Profit & Loss dots
+=======
+    plt.figure(figsize=(20,9), facecolor="white")
+    plt.grid(True, linestyle="--", alpha=0.3)
+
+    # Main price line
+    plt.plot(dates, prices, color="#1f77b4", linewidth=3, label="Closing Price")
+
+    # Profit / Loss points
+>>>>>>> d41965da67685fabdefaad58bb6b15ce0b594801
     profit_x, profit_y = [], []
     loss_x, loss_y = [], []
 
@@ -70,6 +88,7 @@ def home():
             loss_x.append(dates[i])
             loss_y.append(prices[i])
 
+<<<<<<< HEAD
     plt.scatter(profit_x, profit_y, color="#2ecc71", s=80, label="Profit Day ▲")
     plt.scatter(loss_x, loss_y, color="#e74c3c", s=80, label="Loss Day ▼")
 
@@ -100,15 +119,41 @@ def home():
         text.set_fontweight("bold")
 
     # Remove borders
+=======
+    plt.scatter(profit_x, profit_y, color="#2ecc71", s=120, label="Profit Day ▲")
+    plt.scatter(loss_x, loss_y, color="#e74c3c", s=120, label="Loss Day ▼")
+
+    # Area under curve
+    plt.fill_between(dates, prices, min(prices), color="#3498db", alpha=0.08)
+
+    # Labels
+    plt.title(f"{symbol} – 30 Day Market Trend", fontsize=24, fontweight="bold")
+    plt.xlabel("Date", fontsize=18, fontweight="bold")
+    plt.ylabel("Price (₹)", fontsize=18, fontweight="bold")
+
+    plt.xticks(rotation=25, fontsize=14)
+    plt.yticks(fontsize=14)
+
+    plt.legend(fontsize=14, loc="upper left")
+
+>>>>>>> d41965da67685fabdefaad58bb6b15ce0b594801
     for spine in plt.gca().spines.values():
         spine.set_visible(False)
 
     plt.tight_layout()
+<<<<<<< HEAD
     plt.savefig("static/graph.png", dpi=140)
     plt.close()
 
     # -------------------------------
     # Send to UI
+=======
+    plt.savefig("static/graph.png", dpi=180)
+    plt.close()
+
+    # -------------------------------
+    # Render UI
+>>>>>>> d41965da67685fabdefaad58bb6b15ce0b594801
     # -------------------------------
     return render_template(
         "index.html",
