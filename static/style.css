@@ -1,71 +1,144 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
-    font-family: Segoe UI, sans-serif;
+    font-family: "Segoe UI", sans-serif;
     background: #f4f6f9;
 }
 
+/* NAVBAR */
 .navbar {
     background: #0a2540;
-    padding: 15px 30px;
+    padding: 18px 30px;
     color: white;
-    font-size: 22px;
+    font-size: 24px;
+    font-weight: 700;
 }
 
+/* LAYOUT */
 .dashboard {
     display: flex;
     padding: 20px;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
+
+/* LEFT PANEL */
 .left {
-    width: 30%;
+    width: 35%;
     background: white;
-    padding: 20px;
-    border-radius: 15px;
-    margin-right: 20px;
-    box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+    padding: 25px;
+    border-radius: 18px;
+    margin-right: 25px;
+    box-shadow: 0px 8px 30px rgba(0,0,0,0.12);
 }
 
-.left h1 {
-    font-size: 36px;
+.left h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0a2540;
+    margin-bottom: 10px;
 }
 
-.box p {
-    margin: 8px 0;
+/* PRICE */
+.price {
+    font-size: 68px;
+    font-weight: 900;
+    margin: 10px 0;
+    color: #000;
 }
 
+/* TREND */
+.trend {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* STOCK SELECTOR */
+.stock-select {
+    width: 100%;
+    padding: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 10px;
+    border: 2px solid #0a2540;
+    background: #eef3f9;
+    color: #0a2540;
+    margin-bottom: 18px;
+}
+
+/* KPI CARDS */
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.stat {
+    background: #f4f6f9;
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+.stat span {
+    font-size: 14px;
+    color: gray;
+}
+
+.stat b {
+    display: block;
+    font-size: 22px;
+    margin-top: 6px;
+    color: #000;
+}
+
+/* RIGHT PANEL */
 .right {
-    width: 70%;
+    width: 72%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
+
+/* CARDS */
 .card {
     background: white;
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+    padding: 25px;
+    border-radius: 18px;
+    margin-bottom: 25px;
+    box-shadow: 0px 8px 30px rgba(0,0,0,0.12);
 }
 
+/* BUTTON */
 .btn {
     background: #0066ff;
     border: none;
-    padding: 12px 20px;
+    padding: 14px 22px;
     color: white;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .btn:hover {
     background: #004ecc;
 }
-.price {
-    font-size: 52px;
-    font-weight: 700;
-    margin: 10px 0;
-    color: #111;
-}
+
+/* GRAPH */
 .chart {
     width: 100%;
-    max-height: 300px;
+    max-height: 320px;
     object-fit: contain;
 }
