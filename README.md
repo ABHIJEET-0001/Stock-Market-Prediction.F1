@@ -1,5 +1,9 @@
 # 📊 Stock Market Prediction System  
+AI-Powered Trading Dashboard for Indian Stock Market (NSE)
 
+🌐 Live Demo:
+https://stock-market-prediction-f1.onrender.com
+##🚀 Project Overview
 A professional **AI-powered stock market prediction web application** that uses real-time NSE stock data and Machine Learning to predict future stock prices.  
 The system supports multiple Indian companies such as **TCS, Infosys, Reliance, HDFC Bank and ICICI Bank** and displays live prices, trends, profit/loss, and interactive market charts through a modern dashboard.
 
@@ -54,6 +58,10 @@ StockVision/
 
 
 ---
+## 🛡 Reliability
+
+The system includes a fallback data engine.
+If Yahoo Finance is unavailable, the app switches to simulated market data so the website never crashes — similar to real FinTech systems.
 
 ## ⚙️ Installation  
 
@@ -79,4 +87,9 @@ python app.py
 Open in browser:
 
 http://127.0.0.1:5000
+
+## 👨‍💻 Author
+
+Abhijeet Kasera
+B.Tech Computer Science (AI & Software Development)
 
