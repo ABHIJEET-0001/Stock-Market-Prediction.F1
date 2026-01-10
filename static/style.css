@@ -3,91 +3,135 @@
 }
 
 body {
-    overflow-x: hidden;
-}
-
-body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
     background: #f4f6f9;
+    overflow-x: hidden;
 }
 
 /* NAVBAR */
 .navbar {
-    background: #0a2540;
-    padding: 18px 30px;
+    background: linear-gradient(90deg, #0a2540, #0f3c6e);
+    padding: 18px 40px;
     color: white;
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 26px;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 /* LAYOUT */
 .dashboard {
     display: flex;
-    padding: 20px;
+    padding: 24px;
+    gap: 24px;
+    max-width: 100%;
 }
 
+/* LEFT PANEL */
 .left {
-    width: 35%;
+    width: 32%;
     background: white;
-    padding: 25px;
-    border-radius: 18px;
-    margin-right: 25px;
-    box-shadow: 0px 8px 30px rgba(0,0,0,0.12);
+    padding: 28px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.12);
 }
 
 .left h1 {
-    font-size: 36px;
+    font-size: 48px;
+    font-weight: 800;
+    margin: 10px 0;
 }
 
-.box p {
-    margin: 8px 0;
+/* STOCK DROPDOWN */
+select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    border: 2px solid #0a2540;
+    background: #f1f5fb;
+    margin-bottom: 20px;
+}
+
+/* KPI BOXES */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.stat {
+    background: #f6f8fb;
+    padding: 18px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.05);
 }
 
 .stat span {
     font-size: 14px;
-    color: gray;
+    color: #555;
 }
 
 .stat b {
     display: block;
     font-size: 22px;
     margin-top: 6px;
+    font-weight: 800;
     color: #000;
 }
 
 /* RIGHT PANEL */
 .right {
-    width: 70%;
+    width: 68%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
+/* CARDS */
 .card {
     background: white;
-    padding: 25px;
-    border-radius: 18px;
-    margin-bottom: 25px;
-    box-shadow: 0px 8px 30px rgba(0,0,0,0.12);
+    padding: 28px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.12);
+}
+
+/* GRAPH */
+.card img {
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: contain;
 }
 
 /* BUTTON */
 .btn {
-    background: #0066ff;
+    background: linear-gradient(135deg, #0066ff, #004ecc);
     border: none;
-    padding: 14px 22px;
+    padding: 16px 26px;
     color: white;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 800;
+    transition: all 0.2s ease;
 }
 
 .btn:hover {
-    background: #004ecc;
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #0052cc, #003a99);
 }
 
-/* GRAPH */
-.chart {
-    width: 100%;
-    max-height: 300px;
-    object-fit: contain;
+/* MOBILE FIX */
+@media (max-width: 900px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .left, .right {
+        width: 100%;
+    }
 }
