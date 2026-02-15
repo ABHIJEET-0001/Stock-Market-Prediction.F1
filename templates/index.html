@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Stock Market Prediction System</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
@@ -8,18 +9,23 @@
 <body>
 
 <!-- NAVBAR -->
-<div class="navbar">
-    <h2>📊 Stock Market Prediction System</h2>
-</div>
+<nav class="navbar">
+    <div class="nav-left">
+        <h1>📊 Stock Market Prediction</h1>
+        <span class="subtitle">AI-Powered Analytics Dashboard</span>
+    </div>
+</nav>
 
+<!-- MAIN DASHBOARD -->
 <div class="dashboard">
 
     <!-- LEFT PANEL -->
-    <div class="left">
+    <section class="panel left">
 
         <!-- Stock Selector -->
-        <form method="GET">
-            <select name="stock" class="stock-select" onchange="this.form.submit()">
+        <form method="GET" class="stock-form">
+            <label>Select Stock</label>
+            <select name="stock" onchange="this.form.submit()">
                 <option value="TCS.NS" {% if symbol=="TCS.NS" %}selected{% endif %}>TCS</option>
                 <option value="INFY.NS" {% if symbol=="INFY.NS" %}selected{% endif %}>Infosys</option>
                 <option value="RELIANCE.NS" {% if symbol=="RELIANCE.NS" %}selected{% endif %}>Reliance</option>
@@ -28,57 +34,68 @@
             </select>
         </form>
 
-        <h3>{{ symbol }} Stock</h3>
-        <h1 class="price">₹ {{ today }}</h1>
-
-        <div class="trend" style="color:{{color}}">
-            {{ change }} ({{ percent }}%) • {{ trend }}
+        <!-- Price Card -->
+        <div class="price-card">
+            <h2>{{ symbol }}</h2>
+            <h1>₹ {{ today }}</h1>
+            <p class="trend" style="color:{{ color }}">
+                {{ change }} ({{ percent }}%) • {{ trend }}
+            </p>
         </div>
 
         <!-- KPI Cards -->
-        <div class="stats">
-            <div class="stat">
+        <div class="kpi-grid">
+            <div class="kpi">
                 <span>Open</span>
-                <b>₹ {{ open }}</b>
+                <strong>₹ {{ open }}</strong>
             </div>
-            <div class="stat">
+            <div class="kpi">
                 <span>High</span>
-                <b>₹ {{ high }}</b>
+                <strong>₹ {{ high }}</strong>
             </div>
-            <div class="stat">
+            <div class="kpi">
                 <span>Low</span>
-                <b>₹ {{ low }}</b>
+                <strong>₹ {{ low }}</strong>
             </div>
-            <div class="stat">
+            <div class="kpi">
                 <span>Volume</span>
-                <b>{{ volume }}</b>
+                <strong>{{ volume }}</strong>
             </div>
         </div>
 
-    </div>
+    </section>
 
     <!-- RIGHT PANEL -->
-    <div class="right">
+    <section class="panel right">
 
+        <!-- Graph Card -->
         <div class="card">
-            <h3>30-Day Market Trend</h3>
+            <h3>📈 30-Day Market Trend</h3>
             <img src="/static/graph.png" class="chart">
         </div>
 
-        <div class="card">
-            <h3>Market Prediction</h3>
+        <!-- Prediction Card -->
+        <div class="card prediction">
+            <h3>🤖 AI Market Prediction</h3>
             <form method="POST">
                 <button class="btn">Predict Tomorrow’s Price</button>
             </form>
 
             {% if prediction %}
-            <h2 style="margin-top:15px;">₹ {{ prediction }}</h2>
+            <div class="prediction-result">
+                <span>Predicted Price</span>
+                <h2>₹ {{ prediction }}</h2>
+            </div>
             {% endif %}
         </div>
 
-    </div>
+    </section>
 
 </div>
+
+<footer>
+    <p>© 2026 Stock Market Prediction System | Built with Flask & ML</p>
+</footer>
 
 </body>
 </html>
